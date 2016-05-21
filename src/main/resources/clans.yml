@@ -1,0 +1,13 @@
+# xClans 0.1a by impact #
+# Here you can edit players clans #
+# Parameter "friendly" not working at the moment #
+
+clans:
+  admins:
+    name: "Admins"
+    tag: "&cAdmin"
+    friendly: true
+    managers:
+      - admin
+    members:
+      - admin2

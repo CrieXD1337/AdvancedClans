@@ -1,0 +1,11 @@
+name: xClans
+main: ru.undefined1.xClans.xClans
+version: "0.1a"
+author: undefined1
+api: ["1.0.0"]
+
+commands:
+  clan:
+    usage: "/clan"
+  xclan:
+    usage: "/xclan"
