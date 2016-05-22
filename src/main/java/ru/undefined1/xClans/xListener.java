@@ -27,7 +27,6 @@ public class xListener implements Listener {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void chatTag(PlayerChatEvent e) {
        e.setFormat(e.getFormat().replaceAll("<clan>", plugin.getClanTag(plugin.getPlayerClan(e.getPlayer()))));
-        e.getPlayer().sendMessage(e.getFormat().replaceAll("<clan>", plugin.getClanTag(plugin.getPlayerClan(e.getPlayer()))));
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
