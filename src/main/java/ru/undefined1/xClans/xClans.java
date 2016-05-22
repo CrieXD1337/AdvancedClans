@@ -3,6 +3,7 @@ package ru.undefined1.xClans;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
+import cn.nukkit.level.Location;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
 import cn.nukkit.utils.ConfigSection;
@@ -117,20 +118,6 @@ public class xClans extends PluginBase {
         }
     }
 
-    public static void addClan(String clan, String clanName, Player owner) {
-            List<String> owners = new ArrayList<String>();
-            owners.add(owner.getName());
-            String clanPath = "clans." + clan;
-            clans.set(clanPath + ".name", clanName);
-            clans.set(clanPath + ".managers", owners);
-            clans.set(clanPath + ".members", "");
-            players.set(owner.getName(), clan);
-
-            players.save();
-            clans.save();
-            players.reload();
-            clans.reload();
-    }
 
     public void reloadAllConfigs() {
         players.save();
@@ -149,7 +136,6 @@ public class xClans extends PluginBase {
             clans.set(clanPath + ".tag", clanName);
             clans.set(clanPath + ".friendly", friendly);
             clans.set(clanPath + ".managers", owners);
-            clans.set(clanPath + ".members", "");
 
             players.set(owner + ".clan", clan);
 
@@ -243,6 +229,177 @@ public class xClans extends PluginBase {
         }
     }
 
+    public static List<String> getClanModerators(String clan) {
+            List<String> owner = clans.getStringList("clans." + clan + ".moderators");
+            if(owner != null) {
+                return owner;
+            } else {
+                return null;
+            }
+    }
+
+    public static void removeClanManager(Player player, String clan) {
+        if(players.getString(player + ".clan") != "" || players.getString(player + ".clan") != null) {
+            List<String> owner = clans.getList("clans." + getPlayerClan(player) + ".managers");
+            if(owner.contains(player.getName())) {
+                if (owner != null) {
+                    owner.remove(player.getName());
+                }
+            }
+        }
+    }
+    public static void removeClanManager(String player, String clan) {
+        if(players.getString(player + ".clan") != "" || players.getString(player + ".clan") != null) {
+            List<String> owner = clans.getList("clans." + getPlayerClan(player) + ".managers");
+            if(owner.contains(player)) {
+                if (owner != null) {
+                    owner.remove(player);
+                }
+            }
+        }
+    }
+
+    public static void removeClanModerator(Player player, String clan) {
+        if(players.getString(player + ".clan") != "" || players.getString(player + ".clan") != null) {
+            List<String> owner = clans.getList("clans." + getPlayerClan(player) + ".moderators");
+            if(owner.contains(player.getName())) {
+                if (owner != null) {
+                    owner.remove(player.getName());
+                }
+            }
+        }
+    }
+
+    public static void removeClanModerator(String player, String clan) {
+        if(players.getString(player + ".clan") != "" || players.getString(player + ".clan") != null) {
+            List<String> owner = clans.getList("clans." + getPlayerClan(player) + ".moderators");
+            if(owner.contains(player)) {
+                if (owner != null) {
+                    owner.remove(player);
+                }
+            }
+        }
+    }
+
+
+    public static void addClanManager(Player player, String clan) {
+        if(players.getString(player + ".clan") != "" || players.getString(player + ".clan") != null) {
+            List<String> owner = clans.getList("clans." + getPlayerClan(player) + ".managers");
+            if(!owner.contains(player.getName())) {
+                if (owner != null) {
+                    owner.add(player.getName());
+                } else {
+                    List<String> moderator = new ArrayList<String>();
+                    moderator.add(player.getName());
+                    String clanName = getPlayerClan(player);
+                    config.set("clans." + clanName + ".managers", moderator);
+                }
+            }
+        }
+    }
+
+    public static void addClanManager(String player, String clan) {
+        if(players.getString(player + ".clan") != "" || players.getString(player + ".clan") != null) {
+            List<String> owner = clans.getList("clans." + getPlayerClan(player) + ".managers");
+            if(!owner.contains(player)) {
+                if (owner != null) {
+                    owner.add(player);
+                } else {
+                    List<String> moderator = new ArrayList<String>();
+                    moderator.add(player);
+                    String clanName = getPlayerClan(player);
+                    config.set("clans." + clanName + ".managers", moderator);
+                }
+            }
+        }
+    }
+
+    public static Boolean isClanHaveHome(String clan) {
+        if(clans.getString("clans." + clan + ".home") != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static String getClanHomeX(String clan) {
+        if(clans.getString("clans." + clan + ".home") != null) {
+            return clans.getString("clans." + clan + ".home.x");
+        } else {
+            return null;
+        }
+    }
+
+    public static String getClanHomeY(String clan) {
+        if(clans.getString("clans." + clan + ".home") != null) {
+            return clans.getString("clans." + clan + ".home.y");
+        } else {
+            return null;
+        }
+    }
+
+    public static String getClanHomeZ(String clan) {
+        if(clans.getString("clans." + clan + ".home") != null) {
+            return clans.getString("clans." + clan + ".home.z");
+        } else {
+            return null;
+        }
+    }
+
+    public static List<String> getClanBannedMembers(String clan) {
+        List<String> owner = clans.getStringList("clans." + clan + ".banned");
+        if(owner != null) {
+            return owner;
+        } else {
+            return null;
+        }
+    }
+
+    public static void addClanModerator(String player, String clan) {
+        if(players.getString(player + ".clan") != "" || players.getString(player + ".clan") != null) {
+            List<String> owner = clans.getList("clans." + getPlayerClan(player) + ".moderators");
+            if(!owner.contains(player)) {
+                if (owner != null) {
+                    owner.add(player);
+                } else {
+                    List<String> moderator = new ArrayList<String>();
+                    moderator.add(player);
+                    String clanName = getPlayerClan(player);
+                    config.set("clans." + clanName + ".moderators", moderator);
+                }
+            }
+        }
+    }
+
+    public static void addClanModerator(Player player, String clan) {
+        if(players.getString(player + ".clan") != "" || players.getString(player + ".clan") != null) {
+            List<String> owner = clans.getList("clans." + getPlayerClan(player) + ".moderators");
+            if(!owner.contains(player.getName())) {
+                if (owner != null) {
+                    owner.add(player.getName());
+                } else {
+                    List<String> moderator = new ArrayList<String>();
+                    moderator.add(player.getName());
+                    String clanName = getPlayerClan(player);
+                    config.set("clans." + clanName + ".moderators", moderator);
+                }
+            }
+        }
+    }
+
+    public static Boolean isClanModerator(String player) {
+        if(players.getString(player + ".clan") != "" || players.getString(player + ".clan") != null) {
+            List<String> owner = clans.getStringList("clans." + getPlayerClan(player) + ".moderators");
+            if(owner.contains(player)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     public String getMessage(String text, Boolean prefix) {
         if(!prefix) {
             return TextFormat.colorize(config.getString(text));
@@ -289,7 +446,7 @@ public class xClans extends PluginBase {
         this.getServer().getScheduler().cancelAllTasks();
         // cn.nukkit.lang.BaseLang@238b4697
         // cn.nukkit.lang.BaseLang@2b76ff4e
-        sendConsoleMessage(this.getServer().getLanguage().toString(), true);
+
 
         this.getDataFolder().mkdirs();
         this.saveDefaultConfig();
@@ -299,6 +456,7 @@ public class xClans extends PluginBase {
         this.saveResource("clans.yml", false);
         this.saveResource("players.yml", false);
         this.saveResource("config.yml", false);
+        this.saveResource("THANKS.txt", true);
 
         this.playerData = new File(this.getDataFolder(), "players.yml");
         players = new Config(this.playerData, 2);
@@ -310,6 +468,14 @@ public class xClans extends PluginBase {
         config = new Config(this.cfg, 2);
 
         ConfigSection section = this.clans.getSections("clans");
+
+        if(getServer().getLanguage().getLang().equalsIgnoreCase("rus")) {
+            config.set("language", "russian");
+            reloadAllConfigs();
+        } else if(getServer().getLanguage().getLang().equalsIgnoreCase("eng")) {
+            config.set("language", "english");
+            reloadAllConfigs();
+        }
 
         sendConsoleMessage(getTranslation("DEBUG","LOADED2",false), true);
         sendConsoleMessage(getTranslation("DEBUG","LOADED",false).replaceAll("<count>", String.valueOf(section.size())), true);
@@ -340,28 +506,23 @@ public class xClans extends PluginBase {
                     } else {
                         sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "CLAN.NOT-FRIENDLY",true));
                     }
-try {
-    if (!getClanMembers(getPlayerClan(sender.getName())).isEmpty()) {
+
+    if (getClanMembers(getPlayerClan(sender.getName())) != null) {
+        sender.sendMessage("\n");
         sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "CLAN.MEMBERS",true));
-        for (String members : getClanMembers(getPlayerClan(sender.getName()))) {
-            sender.sendMessage(TextFormat.colorize(config.getString("prefix") + " &e " + members));
-        }
+        sender.sendMessage(getClanMembers(getPlayerClan(sender.getName())).toString());
+
         sender.sendMessage("\n");
     } else {
         sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "CLAN.NOMEMBERS",true));
         sender.sendMessage("\n");
     }
-} catch (ClassCastException e) {
-    sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "CLAN.NOMEMBERS",true));
-}
-    if (!getClanManagers(getPlayerClan(sender.getName())).isEmpty()) {
-        sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "CLAN.MANAGERS",true));
-        for (String members : getClanManagers(getPlayerClan(sender.getName()))) {
-            sender.sendMessage(TextFormat.colorize(config.getString("prefix") + " &e " + members));
 
-        }
-    } else {
-        sender.sendMessage(TextFormat.colorize("&bClan don't have any manager"));
+    if (getClanManagers(getPlayerClan(sender.getName())) != null) {
+
+        sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "CLAN.MANAGERS",true));
+        sender.sendMessage(getClanManagers(getPlayerClan(sender.getName())).toString());
+        sender.sendMessage("\n");
     }
 
                 }
@@ -398,8 +559,9 @@ try {
                         Set<String> clansNames = section.getKeys(false);
 
                         if (clansNames.contains(args[1])) {
-                            List<String> claners = getClanMembers(args[1]);
+                            List<String> claners = new ArrayList<String>();
                             claners.add(sender.getName());
+                            clans.set("clans." + args[1] + ".members", claners);
                             players.set(sender.getName() + ".clan", args[1]);
                             reloadAllConfigs();
                             sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-JOIN",true).replaceAll("<clan>",args[1]));
@@ -490,9 +652,9 @@ try {
                     } else {
                        if(isClanManager(sender.getName())) {
 
-                           if(!args[1].matches("[^A-Za-z&]+")) {
-                               setClanTag(getPlayerClan(sender.getName()), args[1].replaceAll("[^A-Za-z&]+", ""));
-                               sender.sendMessage(TextFormat.colorize(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-TAG",true).replaceAll("<tag>", args[1].replaceAll("[^A-Za-z&]+", ""))));
+                           if(!args[1].matches("[^A-Za-z&123456789]+")) {
+                               setClanTag(getPlayerClan(sender.getName()), args[1].replaceAll("[^A-Za-z&123456789]+", ""));
+                               sender.sendMessage(TextFormat.colorize(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-TAG",true).replaceAll("<tag>", args[1].replaceAll("[^A-Za-z&123456789]+", ""))));
                            } else {
                                sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-TAG-ERROR",true));
                            }
@@ -504,8 +666,121 @@ try {
                     }
                     reloadAllConfigs();
                 }
+            } else if(args[0].equalsIgnoreCase("sethome")) {
+                    if(isClanManager(sender.getName())) {
+                        Player p = (Player) sender;
+                        int x = p.getLocation().getFloorX();
+                        int y = p.getLocation().getFloorY();
+                        int z = p.getLocation().getFloorZ();
+
+                        clans.set("clans." + getPlayerClan(sender.getName()) + ".home.x", x);
+                        clans.set("clans." + getPlayerClan(sender.getName()) + ".home.y", y);
+                        clans.set("clans." + getPlayerClan(sender.getName()) + ".home.z", z);
+
+                        sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-HOME-SET",true));
+
+                        clans.save();
+                        clans.reload();
+
+                    } else {
+                        sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "CLAN.RANK.NOT-A-MANAGER",true));
+                    }
+
+            } else if(args[0].equalsIgnoreCase("home")) {
+                if(isClanHaveHome(getPlayerClan(sender.getName()))) {
+                    clans.reload();
+                    double x = clans.getInt("clans." + getPlayerClan(sender.getName()) + ".home.x");
+                    double y = clans.getInt("clans." + getPlayerClan(sender.getName()) + ".home.y");
+                    double z = clans.getInt("clans." + getPlayerClan(sender.getName()) + ".home.z");
+
+                    Player p = (Player) sender;
+                    Location location = new Location(x, y, z);
+                    p.teleport(location);
+                    sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-HOME-TELEPORT",true));
+                }
+            } else if(args[0].equalsIgnoreCase("kick")) {
+                if(args.length == 1) {
+                    sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-KICK-USE",true));
+                } else {
+                    clans.reload();
+                    if(isClanManager(sender.getName())) {
+                        if(getClanMembers(getPlayerClan(sender.getName())) != null) {
+                            if(args[1].contains(sender.getName())) {
+                                sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-KICK-ERROR", true).replaceAll("<player>", args[1]));
+                            } else if(getClanMembers(getPlayerClan(sender.getName())) != null) {
+                                if(getServer().getOnlinePlayers().containsValue(args[1])) {
+                                    getServer().getPlayerExact(args[1]).sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-KICK-TARGET", true).replaceAll("<clan>", getPlayerClan(args[1])));
+                                }
+                                removePlayerFromClan(args[1]);
+                                getClanMembers(getPlayerClan(sender.getName())).remove(args[1]);
+                                reloadAllConfigs();
+                                sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-KICK", true).replaceAll("<player>", args[1]));
+                            } else {
+                                sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "CLAN.NOMEMBERS", true).replaceAll("<player>", args[1]));
+                            }
+                        } else {
+
+                        }
+                    } else {
+                        sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "CLAN.RANK.NOT-A-MANAGER",true));
+                    }
+                }
+            } else if(args[0].equalsIgnoreCase("ban")) {
+                if(args.length == 1) {
+                    sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-BAN-USE",true));
+                } else {
+                    clans.reload();
+                    if(isClanManager(sender.getName())) {
+                        if(getClanBannedMembers(getPlayerClan(sender.getName())) != null) {
+                            if(!getClanBannedMembers(getPlayerClan(sender.getName())).contains(args[1])) {
+                                if(args[1].contains(sender.getName())) {
+                                    sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-BAN-ERROR", true).replaceAll("<player>", args[1]));
+                                } else {
+                                    if(getServer().getOnlinePlayers().containsKey(args[1])) {
+                                        getServer().getPlayerExact(args[1]).sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-KICK-TARGET", true).replaceAll("<clan>", getPlayerClan(args[1])));
+                                    }
+                                    sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-BAN", true).replaceAll("<player>", args[1]));
+                                    removePlayerFromClan(args[1]);
+                                    getClanBannedMembers(getPlayerClan(sender.getName())).add(args[1]);
+                                    reloadAllConfigs();
+                                }
+                            } else {
+                                getClanBannedMembers(getPlayerClan(sender.getName())).remove(args[1]);
+                                sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-BAN-UNBANNED",true).replaceAll("<player>", args[1]));
+                                reloadAllConfigs();
+                            }
+                        } else {
+
+                            List<String> jokey = new ArrayList<String>();
+                            jokey.add(args[1]);
+                            clans.set("clans." + getPlayerClan(sender.getName()) + ".banned", jokey);
+                            removePlayerFromClan(args[1]);
+                            getServer().getPlayerExact(args[1]).sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-KICK-TARGET",true).replaceAll("<clan>", getPlayerClan(args[1])));
+                            sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-BAN",true).replaceAll("<player>", args[1]));
+                           reloadAllConfigs();
+                        }
+                    } else {
+                        sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "CLAN.RANK.NOT-A-MANAGER",true));
+                    }
+
+                }
+            } else if(args[0].equalsIgnoreCase("friendly")) {
+                if (isClanManager(sender.getName())) {
+                    if (isFriendly(getPlayerClan(sender.getName()))) {
+                        clans.set("clans." + getPlayerClan(sender.getName()) + ".friendly", false);
+                        sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-FRIENDLY-OFF", true));
+                        reloadAllConfigs();
+                    } else {
+                        clans.set("clans." + getPlayerClan(sender.getName()) + ".friendly", true);
+                        sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "COMMANDS.CLAN-FRIENDLY-ON", true));
+                        reloadAllConfigs();
+                    }
+                } else {
+                    sender.sendMessage(getTranslation("CLAN-MANAGEMENT", "CLAN.RANK.NOT-A-MANAGER", true));
+                }
             }
-        } else if(cmdLabel.equalsIgnoreCase("xclan")) {
+
+        } else if(cmdLabel.equalsIgnoreCase("xclans")) {
             if(sender.isOp()) {
                 if(args.length == 0) {
                     sender.sendMessage(TextFormat.colorize("&7Use &e/xclan reload &7for all config reloading."));

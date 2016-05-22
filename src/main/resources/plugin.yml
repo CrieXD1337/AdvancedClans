@@ -7,5 +7,5 @@ api: ["1.0.0"]
 commands:
   clan:
     usage: "/clan"
-  xclan:
-    usage: "/xclan"
+  xclans:
+    usage: "/xclans"
