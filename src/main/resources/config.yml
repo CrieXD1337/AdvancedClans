@@ -1,14 +1,16 @@
 # Player name tags update time #
 cooldown: 30
 
+# Other options #
 debug: true
 
 # Available languages: russian, english #
-language: "english"
+language: 'english'
 
 # Here you can edit messages #
 # Messages prefix #
-prefix: "&8[&exClans&8]"
+prefix: '&8[&exClans&8]'
+clan-message-prefix: '@'
 
 TRANSLATION:
   russian:
@@ -32,10 +34,23 @@ TRANSLATION:
         ALREADY-CREATED: '&cТакой клан уже был создан!'
         RANK:
           NOT-A-MANAGER: '&cВы не директор в этом клане'
+          NOT-A-MODERATOR: '&cВы не модератор в этом клане'
           MEMBER: '&bВаш ранг: &eУчастник'
           MODERATOR: '&bВаш ранг: &2Модератор'
           MANAGER: '&bВаш ранг: &cДиректор'
       COMMANDS:
+        CLAN-BAN-ERROR: '&cВы не можете кикнуть самого себя!'
+        CLAN-BAN-USE: '&aИспользуй: &e/clan ban &d<name>'
+        CLAN-BAN-ERROR: '&cВы не можете забанить самого себя!'
+        CLAN-BAN: '&aУспешно! &7Вы забанили и изгнали &e<player> &7из клана'
+        CLAN-BAN-UNBANNED: '&aУспешно! &7Вы разбанили &e<player> &7в клане'
+        CLAN-BAN-TARGET: '&cВас забанили и исключили из клана &e<clan>'
+        CLAN-KICK: '&aУспешно! &7Вы исключили &e<player> &7из клана'
+        CLAN-KICK-TARGET: '&cВас исключили из клана &e<clan>'
+        CLAN-KICK-USE: '&aИспользуй: &e/clan kick &d<name>'
+        CLAN-KICK-NONE: '&cЭтот игрок не находиться в вашем клане'
+        CLAN-HOME-SET: '&aУспешно! &7Вы установили дом клана!'
+        CLAN-HOME-TELEPORT: '&bВы телепортированы в дом вашего клана'
         CLAN-CREATED: '&aУспешно! &7Вы создали клан &e<clan>'
         CLAN-CREATE-USE: '&aИспользуй: &e/clan create &d<name>'
         CLAN-JOIN: '&aУспешно! &7Вы присоединились к клану &e<clan>'
@@ -50,6 +65,16 @@ TRANSLATION:
         CLAN-TAG: '&bВы изменили тег клана на &e<tag>'
         CLAN-TAG-USE: '&aИспользуй: &e/clan tag &d<new_tag>'
         CLAN-TAG-ERROR: '&cВаш тег содержит ниприемлимые символы!'
+        CLAN-PROMOTE-USE: '&aИспользуй: &e/clan tag &d<nick> &2<member/moderator/manager>'
+        CLAN-FRIENDLY-OFF: '&cТеперь ваш клан враждебный'
+        CLAN-FRIENDLY-ON: '&aТеперь ваш клан дружелюный'
+        PROMOTE:
+          ALREADY-MANAGER: '&cДанный игрок уже является директором клана'
+          ALREADY-MODERATOR: '&cДанный игрок уже являеться модератором клана'
+          ALREADY-MEMBER: '&cДанный игрок уже является участником клана'
+          SET-MANAGER: '&eВы повысили игрока до должности Директор'
+          SET-MODERATOR: '&eВы повысили игрока до должности Модератор'
+          SET-MEMBER: '&eВы понизи игрока до должности Участник'
     PVP:
       FRIENDLY-FIRE: '&cВы атаковали участника вашего клана!'
       FRIENDLY-CLAN: '&cИгрок находиться в дружелюбном клане!'
@@ -66,7 +91,7 @@ TRANSLATION:
         NOT-IN-CLAN: '&bYou are not a member in any clan'
       CLAN:
         FRIENDLY: '&bYour clan is &aFriendly'
-        NOT-FRIENDLY: '&bYour clan is &cNot Friendly'
+        NOT-FRIENDLY: '&bYour clan is &cAgressive'
         MYCLAN: '&bYour clan is &e<name>'
         MEMBERS: '&e[>==== CLAN MEMBERS ====<]'
         NOMEMBERS: '&cClan don''t have members!'
@@ -79,6 +104,18 @@ TRANSLATION:
           MODERATOR: '&bYour rank: &2Moderator'
           MANAGER: '&bYour rank: &cManager'
       COMMANDS:
+        CLAN-BAN-ERROR: '&cYou can''t kick youself!'
+        CLAN-BAN-USE: '&aUse: &e/clan ban &d<name>'
+        CLAN-BAN: '&aSuccessful! &7You banned and kicked &e<player> &7from clan'
+        CLAN-BAN-ERROR: '&cYou can''t ban youself!'
+        CLAN-BAN-UNBANNED: '&aSuccessful! &7You unbanned &e<player> &7in clan'
+        CLAN-BAN-TARGET: '&cYou banned and kicked from &e<clan>'
+        CLAN-KICK: '&aSuccessful! &7You kicked &e<player> &7from clan'
+        CLAN-KICK-TARGET: '&cYou kicked from &e<clan>'
+        CLAN-KICK-USE: '&aUse: &e/clan kick &d<name>'
+        CLAN-KICK-NONE: '&cThat player not exists in your clan'
+        CLAN-HOME-SET: '&aSuccessful! &7Home set on this position!'
+        CLAN-HOME-TELEPORT: '&bYou teleported in your clan home'
         CLAN-CREATED: '&aSuccessful! &7You create a &e<clan>'
         CLAN-CREATE-USE: '&aUse: &e/clan create &d<name>'
         CLAN-JOIN: '&aSuccessful! &7You joined a &e<clan>'
@@ -93,6 +130,16 @@ TRANSLATION:
         CLAN-TAG: '&bYou changed your clan tag to &e<tag>'
         CLAN-TAG-USE: '&aUse: &e/clan tag &d<new_tag>'
         CLAN-TAG-ERROR: '&cYour tag contains unacceptable characters!'
+        CLAN-PROMOTE-USE: '&aИспользуй: &e/clan tag &d<nick> &2<member/moderator/manager>'
+        CLAN-FRIENDLY-OFF: '&cNow your clan is Agressive'
+        CLAN-FRIENDLY-ON: '&aNow your clan is Friendly'
+        PROMOTE:
+          ALREADY-MANAGER: '&cДанный игрок уже является директором клана'
+          ALREADY-MODERATOR: '&cДанный игрок уже являеться модератором клана'
+          ALREADY-MEMBER: '&cДанный игрок уже является участником клана'
+          SET-MANAGER: '&eВы повысили игрока до должности Директор'
+          SET-MODERATOR: '&eВы повысили игрока до должности Модератор'
+          SET-MEMBER: '&eВы понизи игрока до должности Участник'
     PVP:
       FRIENDLY-FIRE: '&cYou attacked your clan member!'
       FRIENDLY-CLAN: '&cPlayer in friendly clan!'
