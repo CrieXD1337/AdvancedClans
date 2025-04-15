@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class xClans extends PluginBase {
-    public static xClans instance;
+public class AdvancedClans extends PluginBase {
+    public static AdvancedClans instance;
     private File cfg;
     public static Config config;
     private File clanData;
@@ -22,10 +22,10 @@ public class xClans extends PluginBase {
     private File playerData;
     public static Config players;
 
-    public xClans() {
+    public AdvancedClans() {
     }
 
-    public static xClans getPlugin() {
+    public static AdvancedClans getPlugin() {
         return instance;
     }
 
@@ -352,12 +352,12 @@ public class xClans extends PluginBase {
         int sec = Integer.parseInt(compiler);
         this.getServer().getScheduler().scheduleRepeatingTask(new Runnable() {
             public void run() {
-                for(Player player : xClans.this.getServer().getOnlinePlayers().values()) {
-                    xClans.setClanNameTag(player, xClans.getPlayerClan(player));
+                for(Player player : AdvancedClans.this.getServer().getOnlinePlayers().values()) {
+                    AdvancedClans.setClanNameTag(player, AdvancedClans.getPlayerClan(player));
                 }
 
-                if (xClans.config.getBoolean("debug")) {
-                    xClans.this.sendConsoleMessage(xClans.this.getTranslation("DEBUG", "CLAN-TAG-UPDATED", false), true);
+                if (AdvancedClans.config.getBoolean("debug")) {
+                    AdvancedClans.this.sendConsoleMessage(AdvancedClans.this.getTranslation("DEBUG", "CLAN-TAG-UPDATED", false), true);
                 }
 
             }
