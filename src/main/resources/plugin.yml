@@ -1,5 +1,5 @@
 name: AdvancedClans
-main: ru.rexlite.Loader
+main: ru.rexlite.AdvancedClans
 version: "1.0.2"
 author: "Criex (original plugin by: undefined1)"
 api: ["1.1.0"]
