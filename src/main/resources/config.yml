@@ -16,7 +16,7 @@ TRANSLATION:
   russian:
     DEBUG:
       LOADED: '&aЗагружено &2<count> &aкланов!'
-      LOADED2: '&aРазработал &eundefined1'
+      LOADED2: '&aРазработал &eCriex (оригинальный плагин: undefined1)'
       CLAN-TAG-UPDATED: '&aТеги игроков обновлены!'
     CLAN-MANAGEMENT:
       NO-CLAN:
@@ -29,15 +29,15 @@ TRANSLATION:
         MYCLAN: '&bНазвание клана: &e<name>'
         MEMBERS: '&e[>==== УЧАСТНИКИ В КЛАНЕ ====<]'
         NOMEMBERS: '&cВ клане нету участников!'
-        MANAGERS: '&e[>==== ДИРЕКТОРЫ КЛАНА ====<]'
+        MANAGERS: '&e[>==== ЛИДЕРЫ КЛАНА ====<]'
         ALREADY-MEMBER: '&cВы уже состоите в клане!'
         ALREADY-CREATED: '&cТакой клан уже был создан!'
         RANK:
-          NOT-A-MANAGER: '&cВы не директор в этом клане'
+          NOT-A-MANAGER: '&cВы не лидер в этом клане'
           NOT-A-MODERATOR: '&cВы не модератор в этом клане'
           MEMBER: '&bВаш ранг: &eУчастник'
           MODERATOR: '&bВаш ранг: &2Модератор'
-          MANAGER: '&bВаш ранг: &cДиректор'
+          MANAGER: '&bВаш ранг: &cЛидер'
       COMMANDS:
         CLAN-BAN-USE: '&aИспользуй: &e/clan ban &d<name>'
         CLAN-BAN-ERROR: '&cВы не можете забанить самого себя!'
@@ -59,7 +59,7 @@ TRANSLATION:
         CLAN-CANT-LEAVE: '&bВы последний в клане, вам нужно распустить клан!'
         CLAN-CANT-LEAVE2: '&bИспользуйте: &e/clan disband'
         CLAN-DISBAND: '&bКлан распушен.'
-        CLAN-CANT-DISBAND: '&bВы не можете распустить клан, вы в нем не директор.'
+        CLAN-CANT-DISBAND: '&bВы не можете распустить клан, вы в нем не лидер.'
         CLAN-CANT-DISBAND2: '&bЕсли вы хотите ути, используйте: &e/clan leave'
         CLAN-TAG: '&bВы изменили тег клана на &e<tag>'
         CLAN-TAG-USE: '&aИспользуй: &e/clan tag &d<new_tag>'
@@ -68,20 +68,23 @@ TRANSLATION:
         CLAN-FRIENDLY-OFF: '&cТеперь ваш клан враждебный'
         CLAN-FRIENDLY-ON: '&aТеперь ваш клан дружелюный'
         PROMOTE:
-          ALREADY-MANAGER: '&cДанный игрок уже является директором клана'
+          ALREADY-MANAGER: '&cДанный игрок уже является лидером клана'
           ALREADY-MODERATOR: '&cДанный игрок уже являеться модератором клана'
           ALREADY-MEMBER: '&cДанный игрок уже является участником клана'
-          SET-MANAGER: '&eВы повысили игрока до должности Директор'
+          SET-MANAGER: '&eВы повысили игрока до должности Лидер'
           SET-MODERATOR: '&eВы повысили игрока до должности Модератор'
           SET-MEMBER: '&eВы понизи игрока до должности Участник'
     PVP:
       FRIENDLY-FIRE: '&cВы атаковали участника вашего клана!'
       FRIENDLY-CLAN: '&cИгрок находиться в дружелюбном клане!'
       FRIENDLY: '&cВы находитесь в дружелюбном клане!'
+    ADMIN-MSG:
+      RELOAD-MESSAGE: '&7> &cИспользуй &e/xclan reload &cчтобы перезагрузить конфигурацию.'
+      RELOAD-SUCCESS: '&7> &fКонфигурация&a успешно&f перезагружена!'
   english:
     DEBUG:
       LOADED: '&aLoaded &2<count> &aclans!'
-      LOADED2: '&aDeveloped by &eundefined1'
+      LOADED2: '&aDeveloped by &eCriex &7(orgignal plugin by: &eundefined1&7)'
       CLAN-TAG-UPDATED: '&aPlayer clan tags updated!'
     CLAN-MANAGEMENT:
       NO-CLAN:
@@ -128,7 +131,7 @@ TRANSLATION:
         CLAN-TAG: '&bYou changed your clan tag to &e<tag>'
         CLAN-TAG-USE: '&aUse: &e/clan tag &d<new_tag>'
         CLAN-TAG-ERROR: '&cYour tag contains unacceptable characters!'
-        CLAN-PROMOTE-USE: '&aИспользуй: &e/clan tag &d<nick> &2<member/moderator/manager>'
+        CLAN-PROMOTE-USE: '&aUse: &e/clan tag &d<nick> &2<member/moderator/manager>'
         CLAN-FRIENDLY-OFF: '&cNow your clan is Agressive'
         CLAN-FRIENDLY-ON: '&aNow your clan is Friendly'
         PROMOTE:
@@ -142,3 +145,6 @@ TRANSLATION:
       FRIENDLY-FIRE: '&cYou attacked your clan member!'
       FRIENDLY-CLAN: '&cPlayer in friendly clan!'
       FRIENDLY: '&cYou are in friendly clan!'
+    ADMIN-MSG:
+      RELOAD-MESSAGE: '&7> &cUse &e/xclan reload &cfor all config reloading.'
+      RELOAD-SUCCESS: '&7> &fConfigurations&a successfully&f reloaded!'
