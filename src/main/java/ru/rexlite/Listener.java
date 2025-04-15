@@ -11,9 +11,9 @@ import cn.nukkit.utils.TextFormat;
 import java.util.List;
 
 public class Listener implements cn.nukkit.event.Listener {
-    xClans plugin;
+    AdvancedClans plugin;
 
-    public Listener(xClans plugin) {
+    public Listener(AdvancedClans plugin) {
         this.plugin = plugin;
     }
 
@@ -23,24 +23,24 @@ public class Listener implements cn.nukkit.event.Listener {
     )
     public void chatTag(PlayerChatEvent e) {
         String var10000 = e.getMessage();
-        xClans var10001 = this.plugin;
-        if (var10000.startsWith(xClans.config.getString("clan-message-prefix"))) {
-            xClans var9 = this.plugin;
-            if (xClans.getPlayerClan(e.getPlayer().getName()) != null) {
+        AdvancedClans var10001 = this.plugin;
+        if (var10000.startsWith(AdvancedClans.config.getString("clan-message-prefix"))) {
+            AdvancedClans var9 = this.plugin;
+            if (AdvancedClans.getPlayerClan(e.getPlayer().getName()) != null) {
                 var9 = this.plugin;
                 var9 = this.plugin;
-                List<String> members = xClans.getClanMembers(xClans.getPlayerClan(e.getPlayer()));
+                List<String> members = AdvancedClans.getClanMembers(AdvancedClans.getPlayerClan(e.getPlayer()));
                 var9 = this.plugin;
                 var9 = this.plugin;
-                List<String> managers = xClans.getClanManagers(xClans.getPlayerClan(e.getPlayer()));
+                List<String> managers = AdvancedClans.getClanManagers(AdvancedClans.getPlayerClan(e.getPlayer()));
                 StringBuilder var14 = (new StringBuilder()).append("&e[");
                 var10001 = this.plugin;
                 var10001 = this.plugin;
-                String clanTag = var14.append(xClans.getClanTag(xClans.getPlayerClan(e.getPlayer().getName()))).append("&e] ").toString();
-                xClans var15 = this.plugin;
-                xClans.clans.save();
+                String clanTag = var14.append(AdvancedClans.getClanTag(AdvancedClans.getPlayerClan(e.getPlayer().getName()))).append("&e] ").toString();
+                AdvancedClans var15 = this.plugin;
+                AdvancedClans.clans.save();
                 var15 = this.plugin;
-                xClans.clans.reload();
+                AdvancedClans.clans.reload();
                 e.setCancelled(true);
                 if (members != null) {
                     for(String clanMembers : members) {
@@ -56,9 +56,9 @@ public class Listener implements cn.nukkit.event.Listener {
             }
         } else {
             String var19 = e.getFormat();
-            xClans var10003 = this.plugin;
+            AdvancedClans var10003 = this.plugin;
             var10003 = this.plugin;
-            e.setFormat(var19.replaceAll("<clan>", xClans.getClanTag(xClans.getPlayerClan(e.getPlayer()))));
+            e.setFormat(var19.replaceAll("<clan>", AdvancedClans.getClanTag(AdvancedClans.getPlayerClan(e.getPlayer()))));
         }
 
     }
@@ -73,26 +73,26 @@ public class Listener implements cn.nukkit.event.Listener {
 
         try {
             if (e instanceof EntityDamageByEntityEvent && e.getDamager() instanceof Player) {
-                xClans var7 = this.plugin;
-                String playerDamagerClan = xClans.getPlayerClan(e.getDamager().getName());
+                AdvancedClans var7 = this.plugin;
+                String playerDamagerClan = AdvancedClans.getPlayerClan(e.getDamager().getName());
                 var7 = this.plugin;
-                String playerClan = xClans.getPlayerClan(e.getEntity().getName());
+                String playerClan = AdvancedClans.getPlayerClan(e.getEntity().getName());
                 if (((Player)e.getDamager()).isPlayer()) {
                     var7 = this.plugin;
-                    if (xClans.getPlayerClan(damager.getName()) != null) {
+                    if (AdvancedClans.getPlayerClan(damager.getName()) != null) {
                         var7 = this.plugin;
-                        if (xClans.getPlayerClan(player.getName()) != null) {
+                        if (AdvancedClans.getPlayerClan(player.getName()) != null) {
                             if (playerClan.equals(playerDamagerClan)) {
                                 player.sendMessage(this.plugin.getTranslation("PVP", "FRIENDLY-FIRE", true));
                                 e.setCancelled(true);
                             } else {
                                 var7 = this.plugin;
-                                if (xClans.isFriendly(playerClan)) {
+                                if (AdvancedClans.isFriendly(playerClan)) {
                                     player.sendMessage(this.plugin.getTranslation("PVP", "FRIENDLY-CLAN", true));
                                     e.setCancelled(true);
                                 } else {
                                     var7 = this.plugin;
-                                    if (xClans.isFriendly(playerDamagerClan)) {
+                                    if (AdvancedClans.isFriendly(playerDamagerClan)) {
                                         player.sendMessage(this.plugin.getTranslation("PVP", "FRIENDLY", true));
                                         e.setCancelled(true);
                                     }
@@ -103,8 +103,8 @@ public class Listener implements cn.nukkit.event.Listener {
                 }
             }
         } catch (Exception ex) {
-            xClans var10000 = this.plugin;
-            if (xClans.config.getBoolean("debug")) {
+            AdvancedClans var10000 = this.plugin;
+            if (AdvancedClans.config.getBoolean("debug")) {
                 this.plugin.sendConsoleMessage("&7[&cWARNING&7] Cathed error: &e" + ex.getStackTrace(), true);
             }
         }
@@ -117,8 +117,8 @@ public class Listener implements cn.nukkit.event.Listener {
     )
     public void playerTagSetEvent(PlayerJoinEvent e) {
         Player p = this.plugin.getServer().getPlayer(e.getPlayer().getName());
-        xClans var10000 = this.plugin;
-        xClans var10001 = this.plugin;
-        xClans.setClanNameTag(p, xClans.getPlayerClan(p));
+        AdvancedClans var10000 = this.plugin;
+        AdvancedClans var10001 = this.plugin;
+        AdvancedClans.setClanNameTag(p, AdvancedClans.getPlayerClan(p));
     }
 }
