@@ -1,8 +1,8 @@
 name: xClans
-main: ru.undefined1.xClans.xClans
-version: "0.1a"
-author: undefined1
-api: ["1.0.0"]
+main: ru.rexlite.xClans
+version: "1.0"
+author: "Criex (original plugin: undefined1)"
+api: ["1.1.0"]
 
 commands:
   clan:
