@@ -1,7 +1,7 @@
-name: xClans
-main: ru.rexlite.xClans
-version: "1.0"
-author: "Criex (original plugin: undefined1)"
+name: AdvancedClans
+main: ru.rexlite.Loader
+version: "1.0.2"
+author: "Criex (original plugin by: undefined1)"
 api: ["1.1.0"]
 
 commands:
