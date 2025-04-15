@@ -39,7 +39,6 @@ TRANSLATION:
           MODERATOR: '&bВаш ранг: &2Модератор'
           MANAGER: '&bВаш ранг: &cДиректор'
       COMMANDS:
-        CLAN-BAN-ERROR: '&cВы не можете кикнуть самого себя!'
         CLAN-BAN-USE: '&aИспользуй: &e/clan ban &d<name>'
         CLAN-BAN-ERROR: '&cВы не можете забанить самого себя!'
         CLAN-BAN: '&aУспешно! &7Вы забанили и изгнали &e<player> &7из клана'
@@ -104,7 +103,6 @@ TRANSLATION:
           MODERATOR: '&bYour rank: &2Moderator'
           MANAGER: '&bYour rank: &cManager'
       COMMANDS:
-        CLAN-BAN-ERROR: '&cYou can''t kick youself!'
         CLAN-BAN-USE: '&aUse: &e/clan ban &d<name>'
         CLAN-BAN: '&aSuccessful! &7You banned and kicked &e<player> &7from clan'
         CLAN-BAN-ERROR: '&cYou can''t ban youself!'
