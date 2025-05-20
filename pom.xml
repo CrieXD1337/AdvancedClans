@@ -4,8 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.rexlite</groupId>
-    <artifactId>xClans</artifactId>
+    <artifactId>AClans</artifactId>
     <version>1.0</version>
+
+    <name>AdvancedClans</name>
+    <description>Advanced clans plugin for you Nukkit server!</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -29,6 +32,12 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
