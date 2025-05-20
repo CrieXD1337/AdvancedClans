@@ -7,5 +7,6 @@ api: ["1.1.0"]
 commands:
   clan:
     usage: "/clan"
-  xclans:
-    usage: "/xclans"
+  aclans:
+    usage: "/aclans"
+    aliases: ["advancedclans"]
