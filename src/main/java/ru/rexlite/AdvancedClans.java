@@ -653,7 +653,7 @@ public class AdvancedClans extends PluginBase {
                     sender.sendMessage(this.getTranslation("CLAN-MANAGEMENT", "CLAN.RANK.NOT-A-MANAGER", true));
                 }
             }
-        } else if (cmdLabel.equalsIgnoreCase("xclans") && sender.isOp()) {
+        } else if (cmdLabel.equalsIgnoreCase("aclans") && sender.isOp()) {
             if (args.length == 0) {
                 sender.sendMessage(this.getTranslation("CLAN-MANAGEMENT", "ADMIN-MSG.RELOAD-MESSAGE", true));
             } else if (args[0].equalsIgnoreCase("reload")) {
