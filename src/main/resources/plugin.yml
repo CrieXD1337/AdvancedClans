@@ -1,6 +1,6 @@
 name: AdvancedClans
 main: ru.rexlite.AdvancedClans
-version: "1.0.2"
+version: ${pom.version}
 author: "Criex (original plugin by: undefined1)"
 api: ["1.1.0", "1.0.14"]
 
