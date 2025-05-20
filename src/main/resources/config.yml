@@ -9,7 +9,7 @@ language: 'english'
 
 # Here you can edit messages #
 # Messages prefix #
-prefix: '&8[&exClans&8]'
+prefix: '&8[&eAdvancedClans&8]'
 clan-message-prefix: '@'
 
 TRANSLATION:
@@ -79,8 +79,10 @@ TRANSLATION:
       FRIENDLY-CLAN: '&cИгрок находиться в дружелюбном клане!'
       FRIENDLY: '&cВы находитесь в дружелюбном клане!'
     ADMIN-MSG:
-      RELOAD-MESSAGE: '&7> &cИспользуй &e/xclan reload &cчтобы перезагрузить конфигурацию.'
+      RELOAD-MESSAGE: '&7> &cИспользуй &e/aclans reload &cчтобы перезагрузить конфигурацию.'
       RELOAD-SUCCESS: '&7> &fКонфигурация&a успешно&f перезагружена!'
+      
+### ------------------------------------ ENGLISH ------------------------------------ ###      
   english:
     DEBUG:
       LOADED: '&aLoaded &2<count> &aclans!'
@@ -135,16 +137,16 @@ TRANSLATION:
         CLAN-FRIENDLY-OFF: '&cNow your clan is Agressive'
         CLAN-FRIENDLY-ON: '&aNow your clan is Friendly'
         PROMOTE:
-          ALREADY-MANAGER: '&cДанный игрок уже является директором клана'
-          ALREADY-MODERATOR: '&cДанный игрок уже являеться модератором клана'
-          ALREADY-MEMBER: '&cДанный игрок уже является участником клана'
-          SET-MANAGER: '&eВы повысили игрока до должности Директор'
-          SET-MODERATOR: '&eВы повысили игрока до должности Модератор'
-          SET-MEMBER: '&eВы понизи игрока до должности Участник'
+          ALREADY-MANAGER: '&cThis player is already a clan manager'
+          ALREADY-MODERATOR: '&cThis player is already a clan moderator'
+          ALREADY-MEMBER: '&cThis player is already a member of the clan'
+          SET-MANAGER: '&eYou have promoted a player to the position of Manager'
+          SET-MODERATOR: '&eYou have promoted a player to the position of Moderator'
+          SET-MEMBER: '&eYou demoted a player to the rank of Member'
     PVP:
       FRIENDLY-FIRE: '&cYou attacked your clan member!'
       FRIENDLY-CLAN: '&cPlayer in friendly clan!'
       FRIENDLY: '&cYou are in friendly clan!'
     ADMIN-MSG:
-      RELOAD-MESSAGE: '&7> &cUse &e/xclan reload &cfor all config reloading.'
+      RELOAD-MESSAGE: '&7> &cUse &e/aclans reload &cfor all config reloading.'
       RELOAD-SUCCESS: '&7> &fConfigurations&a successfully&f reloaded!'
