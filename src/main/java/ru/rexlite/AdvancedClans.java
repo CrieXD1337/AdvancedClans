@@ -331,7 +331,7 @@ public class AdvancedClans extends PluginBase {
         if (!prefix) {
             return TextFormat.colorize(config.getString(text));
         } else {
-            String prefixs = TextFormat.colorize("&e[&bxClans&e]");
+            String prefixs = TextFormat.colorize("&e[&bAdvancedClans&e]");
             return TextFormat.colorize(prefixs + " " + config.getString(text));
         }
     }
@@ -340,7 +340,7 @@ public class AdvancedClans extends PluginBase {
         if (!prefix) {
             this.getServer().getConsoleSender().sendMessage(TextFormat.colorize(text));
         } else {
-            String prefixs = TextFormat.colorize("&e[&bxClans&e]");
+            String prefixs = TextFormat.colorize("&e[&bAdvancedClans&e]");
             this.getServer().getConsoleSender().sendMessage(prefixs + " " + TextFormat.colorize(text));
         }
 
